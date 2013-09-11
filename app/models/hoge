@@ -1,0 +1,20 @@
+
+class AcGenerator < ActiveRecord::Base
+  def setAccident(generator)
+    1000.times do |i|
+      @isAccidents[i] = generator.call
+    end
+  end
+  
+  def getDisplayResult
+    @isAccidents.each do |accident|
+      accidentLine += (accident) ? "o" : "."
+    end
+
+    @displayResult = accidentLine.unpack("A100"*(accidentLine.length/100))
+
+  # Plock
+  randGenerator = Plock.new do
+    return ((rand 10) == 0)
+  end
+end
