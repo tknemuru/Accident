@@ -1,9 +1,9 @@
 <h1>事故の検証</h1>
 
-<% @result.each do |item| %>
+<% @displayResults.each do |item| %>
   <p><%= item %></p>
 <% end %>
 
-<% @spanCount.each do |item| %>
-  <p><%= item %></p>
+<% @spanInfos.each do |info| %>
+  <p><%= info.label %>|<%= info.getGraph + " " + info.getLength.to_s + " (" + info.getRatio(@spanCount) + "%)" %></p>
 <% end %>
